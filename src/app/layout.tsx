@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
+import Link from "next/link"
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] })
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] })
@@ -16,10 +17,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         <header className="border-b">
           <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-            <a href="/" className="font-semibold">TerrazaWeb</a>
+            <Link href="/" className="font-semibold">TerrazaWeb</Link>
             <div className="flex items-center gap-4 text-sm">
-              <a href="/host" className="hover:underline">Host</a>
-              <a href="/login" className="hover:underline">Login</a>
+              <Link href="/host" className="hover:underline">Host</Link>
+              <Link href="/login" className="hover:underline">Login</Link>
             </div>
           </nav>
         </header>
