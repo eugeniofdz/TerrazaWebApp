@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/navbar/Navbar";
 import Link from "next/link";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -24,21 +25,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        <header className="sticky top-0 z-50 border-b bg-black">
-          <nav className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
-            <Link href="/" className="font-semibold">
-              TerrazaWeb
-            </Link>
-            <div className="flex items-center gap-4 text-sm">
-              <Link href="/host" className="hover:underline">
-                Host
-              </Link>
-              <Link href="/login" className="hover:underline">
-                Login
-              </Link>
-            </div>
-          </nav>
-        </header>
+        <Navbar />
 
         <main className="flex-1 mx-auto px-4 py-8">{children}</main>
 
