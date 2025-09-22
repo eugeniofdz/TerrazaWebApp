@@ -1,5 +1,4 @@
 import VenueCard from "@/components/VenueCard";
-import { venues } from "@/lib/venues";
 
 export default function Home() {
   return (
@@ -12,11 +11,7 @@ export default function Home() {
       </p>
       <section className="space-y-6">
         <h1 className="text-3xl font-bold">Explore event spaces</h1>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-          {venues.map((v) => (
-            <VenueCard key={v.id} venue={v} />
-          ))}
-        </div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5"></div>
       </section>
     </section>
   );
