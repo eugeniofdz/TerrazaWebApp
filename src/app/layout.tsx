@@ -5,6 +5,8 @@ import Navbar from "@/components/navbar/Navbar";
 import ClientOnly from "@/components/ClientOnly";
 import RegisterModal from "@/components/modals/RegisterModal";
 import ToasterProvider from "./providers/ToasterProvider";
+import LoginModal from "@/components/modals/LoginModal";
+import getCurrentUser from "./actions/getCurrentUser";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -17,11 +19,12 @@ export const metadata: Metadata = {
   description: "Book venues",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const currentUser = await getCurrentUser();
   return (
     <html lang="en">
       <body
@@ -29,8 +32,9 @@ export default function RootLayout({
       >
         <ClientOnly>
           <ToasterProvider />
+          <LoginModal />
           <RegisterModal />
-          <Navbar />
+          <Navbar currentUser={currentUser} />
         </ClientOnly>
 
         <main className="flex-1 mx-auto px-4 py-8">{children}</main>
