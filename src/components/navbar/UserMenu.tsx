@@ -16,15 +16,25 @@ interface UserMenuProps {
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const registerModal = userRegisterModal();
   const loginModal = useLoginModal();
+
   const [isOpen, setIsOpen] = useState(false);
+
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
+
+  const onRent = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
+    // Open rent modal
+  }, [currentUser, loginModal]);
+
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          onClick={() => {}}
+          onClick={onRent}
           className="
         hidden
         md:block
@@ -39,7 +49,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         cursor-pointer
         "
         >
-          FUNNY
+          Soluna your home
         </div>
         <div
           onClick={toggleOpen}
